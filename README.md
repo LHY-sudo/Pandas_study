@@ -1,15 +1,15 @@
-##Pandas 概述
+## Pandas 概述
 `Pandas`是`Python`的核心数据分析支持库，提供了快速、灵活、明确的数据结构，旨在简单、直观地处理关系型、标记型数据,其长远目标是成为最强大、最灵活、可以支持任何语言的开源数据分析工具。
 
 ---
-####`pandas`适用于处理以下`数据类型`:
+#### `pandas`适用于处理以下`数据类型`:
 
 - 与Sql或者Excel表类似，含异构列的表格数据;
 - 有序和无序（非固定频率）的时间序列数据;
 - 带行列标签的矩阵数据，包括同构或异构型数据;
 - 任意其它形式的观测、统计数据集, 数据转入 Pandas 数据结构时不必事先标记;、
 
-####`pandas`的主要数据结构是`Series`(一维数据)与`Dataframe`(二维数据)，`Pandas`基于`Numpy`开发，可以与第三方科学计算支持库完美结合。
+#### `pandas`的主要数据结构是`Series`(一维数据)与`Dataframe`(二维数据)，`Pandas`基于`Numpy`开发，可以与第三方科学计算支持库完美结合。
 
 *`Pandas`部分优势*
 
@@ -32,7 +32,7 @@
 
 ---
 
-##数据结构
+## 数据结构
 
 ---
 
@@ -46,7 +46,7 @@
 >- `Pandas` 里，绝大多数方法都不改变原始输入的数据，而是复制数据，生成新的对象。
 >- `数据对齐是内在的`，这一原则是根本的。除非显式指定，Pandas 不会断开标签和数据之间的连接。
 
-###Series
+### Series
 
 *`Series`是带标签的一维数组，可存储整数、浮点数、字符串、Python 对象等类型的数据。轴标签统称为索引。调用 pd.Series 函数即可创建 Series：*
 
@@ -63,7 +63,7 @@ s = pd.Series(data, index=index)
 
 `index` 是轴标签列表。不同数据可分为以下几种情况：
 
-####1,多维数组
+#### 1,多维数组
 
 `data` 是多维数组时，`index` 长度必须与 `data` 长度一致。没有指定 index 参数时，创建数值型索引，即 `[0, ..., len(data) - 1]`。
 
@@ -104,7 +104,7 @@ dtype: int64
 > 
 >`Pandas` 用 `NaN` 表示缺失数据。
 
-####3,标量值
+#### 3,标量值
 `data` 是标量值时，必须提供索引。`Series` 按索引长度重复该标量值。
 ```python
 In : pd.Series(5., index=['a', 'b', 'c', 'd', 'e'])
@@ -117,7 +117,7 @@ e    5.0
 dtype: float64
 ```
 
-####Series 类似多维数组
+#### Series 类似多维数组
 `Series` 操作与 `ndarray` 类似，支持大多数 `NumPy` 函数，还支持索引切片。
 
 和 `NumPy` 数组一样，`Series` 也支持 `dtype` 。
@@ -143,7 +143,7 @@ In : s.to_numpy()
 Out: array([ 0.4691, -0.2829, -1.5091, -1.1356,  1.2121])
 ```
 
-####矢量操作与对齐 Series 标签
+#### 矢量操作与对齐 Series 标签
 
 `Series` 和 `NumPy` 数组一样，都不用循环每个值，而且 `Series` 支持大多数 `NumPy` 多维数组的方法。
 
@@ -175,7 +175,7 @@ d   -2.271265
 dtype: float64
 ```
 
-####Series 支持 name 属性：
+#### Series 支持 name 属性：
 
 ```python
 In : s = pd.Series(np.random.randn(5), name='something')
@@ -204,7 +204,7 @@ Out: 'different'
 > 
 > s 与 s2 指向不同的对象。
 
-###DataFrame
+### DataFrame
 
 `DataFrame` 是由多种类型的列构成的二维标签数据结构，类似于 `Excel` 、`SQL` 表，或 `Series` 对象构成的字典。`DataFrame` 是最常用的 `Pandas` 对象，与 `Series` 一样，`DataFrame` 支持多种类型的输入数据：
 
@@ -224,7 +224,7 @@ Out: 'different'
 >
 >Python < 3.6 或 Pandas < 0.23，且未指定 columns 参数时，DataFrame 的列按字典键的字母排序。
 
-####用 Series 字典或字典生成 DataFrame
+#### 用 Series 字典或字典生成 DataFrame
 
 生成的索引是每个 `Series` 索引的并集。先把嵌套字典转换为 `Series`。如果没有指定列，`DataFrame` 的列就是字典键的有序列表。
 
@@ -266,7 +266,7 @@ In : df.columns
 Out: Index(['one', 'two'], dtype='object')
 ```
 
-####用多维数组字典、列表字典生成 DataFrame
+#### 用多维数组字典、列表字典生成 DataFrame
 
 多维数组的长度必须相同。如果传递了索引参数，`index` 的长度必须与数组一致。如果没有传递索引参数，生成的结果是 `range(n)`，n 为数组长度。
 
@@ -289,7 +289,7 @@ c  3.0  2.0
 d  4.0  1.0
 ```
 
-####用结构多维数组或记录多维数组生成 DataFrame
+#### 用结构多维数组或记录多维数组生成 DataFrame
 本例与数组字典的操作方式相同。
 
 ```python
