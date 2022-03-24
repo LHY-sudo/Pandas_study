@@ -294,7 +294,7 @@ d  4.0  1.0
 
 ```python
 In : data = np.zeros((2, ), dtype=[('A', 'i4'), ('B', 'f4'), ('C', 'a10')])
-In [: data[:] = [(1, 2., 'Hello'), (2, 3., "World")]
+In : data[:] = [(1, 2., 'Hello'), (2, 3., "World")]
 In : pd.DataFrame(data)
 Out: 
    A    B         C
